@@ -1,22 +1,25 @@
 import './App.css';
-import MoviesContainer from '../MoviesContainer/MoviesContainer';
-import MovieDetails from '../MovieDetails/MovieDetails';
+// This becomes SubscriptionList
+import SubscriptionList from '../SubscriptionList/SubscriptionList'; 
+// This becomes SubscriptionDetails
+import SubscriptionDetails from '../SubscriptionDetails/SubscriptionDetails';
+// Can make this a teacup icon or something fun
 import homeButton from '../icons/home.png';
 import search from '../icons/search.png';
 import { useState, useEffect } from 'react';
 import { Route, Routes, Link } from 'react-router-dom';
 
 function App() {
-  const [posters, setPosters] = useState([]);
+  const [subscriptions, setSubscriptions] = useState([]);
   const [searchResults, setSearchResults] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
 
-  const fetchMoviePosters = () => {
-    fetch("https://rancid-tomatillos-api-cc6f59111a05.herokuapp.com/api/v1/movies")
+  const fetchAllSubscriptions = () => {
+    fetch("https://localhost:3000/api/v1/subscriptions")
       .then(response => response.json())
-      .then(posterData => {
-        setPosters([...posterData]);
-        setSearchResults(posterData);
+      .then(subscriptionData => {
+        setSubscriptions([...subscriptionData]);
+        setSearchResults(subscriptionData);
       })
       .catch(error => {
         console.log(error);
@@ -24,23 +27,25 @@ function App() {
   };
 
   useEffect(() => {
-    fetchMoviePosters();
+    fetchAllSubscriptions();
   }, []);
   
+  // Let's get rid of this lowercase thing
   const handleSearch = (event) => {
     const query = event.target.value.toLowerCase();
     setSearchQuery(query);
 
-    const filteredPosters = posters.filter((poster) => 
-      poster.title.toLowerCase().includes(query)
+    // Maybe I can even add a filter by subscription type/cost/etc. time permitting
+    const filteredSubscriptions = subscriptions.filter((subscription) => 
+      subscription.title.toLowerCase().includes(query)
     );
-    setSearchResults(filteredPosters);
+    setSearchResults(filteredSubscriptions);
   }
 
   return (
     <div>
       <div className='header'>
-        <h1>rancid tomatillos</h1>
+        <h1>Mrs. Nesbitt's Tea Time</h1>
         <Routes>
           <Route 
             path='/:movieId' 
@@ -63,7 +68,7 @@ function App() {
                 <img src={search} alt="search-icon" />
                 <input
                   type='text'
-                  placeholder='Search Movies...'
+                  placeholder='Search Subscriptions...'
                   className='search-bar'
                   value={searchQuery}
                   onChange={handleSearch}
@@ -74,8 +79,8 @@ function App() {
         </Routes>
       </div>
       <Routes>
-        <Route path='/' element={<MoviesContainer movies={searchResults} />} />
-        <Route path='/:movieId' element={<MovieDetails />} />
+        <Route path='/' element={<SubscriptionList subscriptions={searchResults} />} />
+        <Route path='/:subscriptionId' element={<SubscriptionDetails />} />
       </Routes>
     </div>
   );

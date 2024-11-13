@@ -6,11 +6,11 @@ describe('Movie Details', () => {
     cy.intercept('GET', "https://rancid-tomatillos-api-cc6f59111a05.herokuapp.com/api/v1/movies", { body: posters }).as('getMovies');
     cy.visit('http://localhost:3000/')
     let movie = posters[0]
-    cy.intercept('GET', `https://rancid-tomatillos-api-cc6f59111a05.herokuapp.com/api/v1/movies/${movie.id}`, { body: details }).as('getMovieDetails');
+    cy.intercept('GET', `https://rancid-tomatillos-api-cc6f59111a05.herokuapp.com/api/v1/movies/${movie.id}`, { body: details }).as('getSubscriptionDetails');
     cy.visit('http://localhost:3000/');
     cy.wait('@getMovies')
     cy.get('.movie-card').first().click()
-    cy.get('@getMovieDetails');
+    cy.get('@getSubscriptionDetails');
   })
 
   it('displays movie details of the movie being clicked', () => {

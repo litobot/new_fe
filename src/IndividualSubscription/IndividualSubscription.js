@@ -1,14 +1,15 @@
-import './MoviePoster.css';
+import './IndividualSubscription.css';
 import upVote from '../icons/upvote.png'
 import downVote from '../icons/downvote.png'
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-const MoviePoster = ({ posterPath , voteCount, posterId }) => {
+// Change voting to activate, cancel subscription
+const IndividualSubscription = ({ posterPath , voteCount, posterId }) => {
   const [votes, setVotes] = useState(voteCount)
   
   function adjustVote(vertical){
-    fetch(`https://rancid-tomatillos-api-cc6f59111a05.herokuapp.com/api/v1/movies/${posterId}`, {
+    fetch(`https://localhost:3000/api/v1/subscriptions${posterId}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -40,4 +41,4 @@ const MoviePoster = ({ posterPath , voteCount, posterId }) => {
     </div>
   );
 };
-export default MoviePoster;
+export default IndividualSubscription;

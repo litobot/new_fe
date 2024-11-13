@@ -14,23 +14,19 @@
 7.  Enter `control + c` in your terminal to stop running the React app at any time
 8.  To run Cypress tests, use `npx cypress open`
 
-
 ## Collaborators:
 
 https://github.com/MDelarosa1993
 https://github.com/litobot
 
-
 ## Deployed Link:
 
 https://rancid-tomatillos-roan-eta.vercel.app
 
-
 ## Screenshots:
 
-![Movie Details Screenshot](src/Assets/MovieDetails.png)
-![Movies Container Screenshot](src/Assets/MoviesContainer.png)
-
+![Movie Details Screenshot](src/Assets/SubscriptionDetails.png)
+![Movies Container Screenshot](src/Assets/SubscriptionList.png)
 
 ## Overview of Project & Goals:
 
@@ -42,7 +38,7 @@ https://rancid-tomatillos-roan-eta.vercel.app
 
 4. This application was built using React, React Router, and was end-to-end tested via Cypress utilizing API call interception and stubbed data to prevent unnecessary calls. We chose to deploy using Vercel as it was smooth and seamless.
 
-5. Challenges: 
+5. Challenges:
 
 - We had some mismatches in scheduling due to being in different time zones and personal/family responsibilities. However, we synced for work over 90% of the time and made decent progress.
 
@@ -60,4 +56,4 @@ https://rancid-tomatillos-roan-eta.vercel.app
 
 7. Reflections:
 
-- It seems like the rumors surrounding learning React regarding the steep learning curve are accurate.  There's a lot of stuff to get used to upfront, but it's clear once those are conquered, it's relatively straightforward.
+- It seems like the rumors surrounding learning React regarding the steep learning curve are accurate. There's a lot of stuff to get used to upfront, but it's clear once those are conquered, it's relatively straightforward.

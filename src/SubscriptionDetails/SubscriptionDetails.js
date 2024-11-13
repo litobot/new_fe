@@ -1,16 +1,16 @@
-import './MovieDetails.css';
+import './SubscriptionDetails.css';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
-function MovieDetails() {
+function SubscriptionDetails() {
   const { movieId } = useParams();
   const [details, setDetails] = useState(null);
 
   useEffect(() => {
     fetch(`https://rancid-tomatillos-api-cc6f59111a05.herokuapp.com/api/v1/movies/${movieId}`)
       .then(response => response.json())
-      .then(movieDetails => {
-        setDetails(movieDetails);
+      .then(SubscriptionDetails => {
+        setDetails(SubscriptionDetails);
       })
       .catch(error => {
         console.log('Error fetching movie details:', error);
@@ -42,4 +42,4 @@ function MovieDetails() {
   );
 }
 
-export default MovieDetails;
+export default SubscriptionDetails;
